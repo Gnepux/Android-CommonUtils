@@ -1,6 +1,3 @@
-# Android-CommonUtils
-Android开发用的一些辅助类
-
 【TextUtils---文本辅助类】
 1. 判断EditText的文本是否为空
     boolean isEmptyEditText(EditText edText)
@@ -89,6 +86,10 @@ Android开发用的一些辅助类
     Map<String, ?> getAll(Context context)
 12. 返回所有的键值对
     Map<String, ?> getAll(Context context, String fileName)
+13. 将bitmap存入sp
+    void setBitmapToPreference(Bitmap bitmap, Context context, String name, String PREFS_FILE_NAME)
+14. 从sp中读取bitmap
+    Bitmap getBitmapFromPreference(Context mContext, String name, String PREFS_FILE_NAME)
 
 【LocationUtils---Location辅助类】
 1. 获取设备当前GPS状态（是否开启）
@@ -127,6 +128,12 @@ Android开发用的一些辅助类
     void openImage(Context mContext, String imagePath)
 13. 从指定URL下载图片显示到ImageView中
     void downloadImageFromURL(final String imgurl, final ImageView mImageView)
+14. 对drawable进行模糊处理
+    blurEffectsOnDrawable(Context mContext, int drawable, int radius)
+15. 将drawable转成bitmap
+    Bitmap drawableTobitmap(Context mContext, int drawable)
+16. 将bitmap转成drawable
+    Drawable bitmapToDrawable(Context mContext, Bitmap bitmap)
 TODO: 4,5,8,9,10无用
 TODO: iStudy项目中用到的图像压缩类
 
@@ -165,5 +172,49 @@ TODO: 更多style的接口，BigTextStyle和BigPictureStyle
 【NumUtils--数字相关的辅助类】
 1. 获得a-z中的随机字符
     char getRandomCharacter()
-2.获取0到指定范围内的随机数
+2. 获取0到指定范围内的随机数
     int getRandom(int maxNum)
+3. 为数字添加后缀 like: 1st, 3rd.
+    String getPostFixForNumber(int number)
+
+【MediaUtils---多媒体相关的辅助类】
+*1. 将device volumen设为app volumen
+    void setCurrentDeviceVolume(Context mContext)
+TODO:播放音乐 Music On/Off
+TODO: 1待验证
+
+【SDCardUtils---SDCard相关辅助类】
+1. 判断SDCard是否可用
+    boolean isSDCardAvailable()
+2. 获取SD卡路径
+    String getSDCardPath()
+3. 获取SD卡的总容量 in byte
+    long getSDCardTotalSize()
+4. 获取SD卡的可用容量 in byte
+    long getSDCardAvailSize()
+5. 获取SD卡的总容量 Format in hunman.
+    String getSDCardTotalSizeInHuman(Context mContext)
+6. 获取SD卡的可用容量 Format in hunman.
+    String getSDCardAvailSizeInHuman(Context mContext)
+7. 获取机身的存储路径
+    String getSystemDataPath()
+8. 获取机身的总容量 in byte
+    long getSystemTotalSize()
+9. 获取机身的可用容量 in byte
+    long getSystemAvailSize()
+10. 获取机身的总容量 Format in hunman.
+    String getSystemTotalSizeInHuman(Context mContext)
+11. 获取机身的可用容量 Format in hunman.
+    String getSystemAvailSizeInHuman(Context mContext)
+12. 判断某个文件是否存在于SDCard中
+    boolean isFileExistInSDCard(String filePath, String fileName)
+13. 向sdcard上写文件
+    boolean saveFileToSDCard(String filePath, String fileName, String content)
+14. 从sdcard上读文件
+    byte[] readFileFromSDCard(String filePath, String fileName)
+15. 从sdcard上删除某路径的文件
+    boolean deleteFileFromSDCard(String filePath, String fileName)
+
+【ViewUtils---View相关辅助类】
+1. 设置在minClickInterval的时间间隔内View不能双击
+    void preventDoubleClick(final View view, long minClickInterval)

@@ -31,4 +31,31 @@ public class NumUtils {
         return rand.nextInt(maxNum);
     }
 
+    /**
+     * 为数字添加后缀 like: 1st, 3rd.
+     *
+     * @param number which you have to add postfix
+     * @return number in string with postfix
+     */
+    public static String getPostFixForNumber(int number) {
+        String strValue = "";
+        // int npos = Integer.valueOf(Pos);
+
+        switch (number % 10) {
+            case 1:
+                strValue = (number % 100 == 11) ? "th" : "st";
+                break;
+            case 2:
+                strValue = (number % 100 == 12) ? "th" : "nd";
+                break;
+            case 3:
+                strValue = (number % 100 == 13) ? "th" : "rd";
+                break;
+            default:
+                strValue = "th";
+                break;
+        }
+        return number + strValue;
+    }
+
 }

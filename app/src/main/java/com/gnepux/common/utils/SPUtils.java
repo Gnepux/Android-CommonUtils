@@ -2,7 +2,11 @@ package com.gnepux.common.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -228,6 +232,45 @@ public class SPUtils {
             } catch (InvocationTargetException e) {
             }
             editor.commit();
+        }
+    }
+
+    /**
+     * 将bitmap存入sp
+     *
+     * @param bitmap
+     * @param context
+     * @param name
+     * @param PREFS_FILE_NAME
+     */
+    public static void setBitmapToPreference(Bitmap bitmap, Context context, String name, String PREFS_FILE_NAME) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        put(context, PREFS_FILE_NAME, name, temp);
+    }
+
+    /**
+     * 从sp中读取bitmap
+     *
+     * @param mContext
+     * @param name
+     * @param PREFS_FILE_NAME
+     * @return
+     */
+    public static Bitmap getBitmapFromPreference(Context mContext, String name, String PREFS_FILE_NAME) {
+
+        try {
+            String imageString = (String) get(mContext, PREFS_FILE_NAME, name, "");
+            byte[] encodeByte = Base64.decode(imageString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
         }
     }
 

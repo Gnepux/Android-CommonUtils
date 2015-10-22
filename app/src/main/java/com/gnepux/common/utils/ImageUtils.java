@@ -4,12 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.gnepux.common.other.BlurEffect;
 import com.gnepux.common.other.PinchZoom;
-import com.gnepux.example.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -370,5 +378,77 @@ public class ImageUtils {
         }).start();
     }
 
+    /**
+     * 对drawable进行模糊处理
+     *
+     * @param mContext
+     * @param drawable for applying effect
+     * @param radius   for blur effect 0 to 25
+     * @return drawable
+     */
+    public static Drawable blurEffectsOnDrawable(Context mContext, int drawable, int radius) {
+
+        if (radius == 0)
+            radius = 20;
+        Bitmap blurBitmap;
+        Bitmap bitmap = drawableTobitmap(mContext, drawable);
+        blurBitmap = BlurEffect.fastblur(mContext, bitmap, radius);
+        return new BitmapDrawable(blurBitmap);
+    }
+
+    /**
+     * 将drawable转成bitmap
+     *
+     * @param mContext
+     * @param drawable for convert to bitmap
+     * @return bitmap image
+     */
+    public static Bitmap drawableTobitmap(Context mContext, int drawable) {
+        Drawable myDrawable = mContext.getResources().getDrawable(drawable);
+        return ((BitmapDrawable) myDrawable).getBitmap();
+    }
+
+    /**
+     * 将bitmap转成drawable
+     *
+     * @param mContext
+     * @param bitmap
+     * @return
+     */
+
+    public static Drawable bitmapToDrawable(Context mContext, Bitmap bitmap) {
+        return new BitmapDrawable(bitmap);
+    }
+
+
+    /**
+     * 生成圆角bitmap
+     * Get Rounded cornered bitmap
+     *
+     * @param bitmap
+     * @param roundPixels
+     * @return
+     */
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int roundPixels) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                .getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = roundPixels;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
+    }
 
 }

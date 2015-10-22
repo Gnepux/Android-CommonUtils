@@ -20,6 +20,12 @@
         android:layout_height="wrap_content"
         android:onClick="goClean"/>
 
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="1500" />
+
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="fill_parent"
