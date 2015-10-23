@@ -225,3 +225,6 @@ TODO:Pick/capture/preview image/video and image
     void chooseProfile(Context context, int mode)
 3.
 TODO: 1待验证
+
+【ScreenUtils---Screen相关辅助类】
+TODO: 截图
