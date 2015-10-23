@@ -178,10 +178,9 @@ TODO: 更多style的接口，BigTextStyle和BigPictureStyle
     String getPostFixForNumber(int number)
 
 【MediaUtils---多媒体相关的辅助类】
-*1. 将device volumen设为app volumen
-    void setCurrentDeviceVolume(Context mContext)
+
 TODO:播放音乐 Music On/Off
-TODO: 1待验证
+TODO:Pick/capture/preview image/video and image
 
 【SDCardUtils---SDCard相关辅助类】
 1. 判断SDCard是否可用
@@ -218,3 +217,11 @@ TODO: 1待验证
 【ViewUtils---View相关辅助类】
 1. 设置在minClickInterval的时间间隔内View不能双击
     void preventDoubleClick(final View view, long minClickInterval)
+
+【SettingUtils---设置相关辅助类】
+*1. 将device volumen设为app volumen
+    void setCurrentDeviceVolume(Context mContext)
+2. 切换手机的场景"静音" or "震动" or "正常"
+    void chooseProfile(Context context, int mode)
+3.
+TODO: 1待验证

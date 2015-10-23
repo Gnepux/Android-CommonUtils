@@ -15,7 +15,7 @@ import java.util.Map;
  * SharedPreferences封装类SPUtils
  * Jan 4, 2015 5:32:44 PM
  */
-public class SPUtils {
+public class CUSPUtils {
     /**
      * 保存在手机里面的文件名
      */

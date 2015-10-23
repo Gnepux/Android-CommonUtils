@@ -7,7 +7,7 @@ import android.view.View;
  * View相关辅助类
  * Created by Gnepux on 2015/10/22.
  */
-public class ViewUtils {
+public class CUViewUtils {
 
     /**
      * 设置在minClickInterval的时间间隔内View不能双击

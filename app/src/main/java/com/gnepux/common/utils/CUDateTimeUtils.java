@@ -19,7 +19,7 @@ import java.util.Locale;
  * 日期时间辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class DateTimeUtils {
+public class CUDateTimeUtils {
 
     /**
      * 日期格式yyyy-MM字符串常量

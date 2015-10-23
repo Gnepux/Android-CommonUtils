@@ -9,7 +9,7 @@ import android.text.*;
  * Dialog相关辅助类
  * Created by Gnepux on 2015/10/22.
  */
-public class DialogUtils {
+public class CUDialogUtils {
 
 
     /**

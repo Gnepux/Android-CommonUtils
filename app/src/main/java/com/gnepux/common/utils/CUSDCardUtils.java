@@ -15,7 +15,7 @@ import java.io.IOException;
  * SD卡相关辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class SDCardUtils {
+public class CUSDCardUtils {
 
     /**
      * 判断SDCard是否可用

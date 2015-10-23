@@ -1,12 +1,13 @@
 package com.gnepux.common.utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * 数字相关的辅助类
  * Created by Gnepux on 2015/10/21.
  */
-public class NumUtils {
+public class CUNumUtils {
 
     /**
      * 获得a-z中的随机字符
@@ -56,6 +57,16 @@ public class NumUtils {
                 break;
         }
         return number + strValue;
+    }
+
+    /**
+     * 随机产生32位数字
+     *
+     * @return UUID字符串
+     */
+    public static String getUUID()
+    {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
 }

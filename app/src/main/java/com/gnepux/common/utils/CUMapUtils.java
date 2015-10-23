@@ -8,7 +8,7 @@ import android.net.Uri;
  * 地图辅助类
  * Created by Gnepux on 2015/10/21.
  */
-public class MapUtils {
+public class CUMapUtils {
 
     /**
      * 在地图上显示地点

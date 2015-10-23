@@ -8,7 +8,7 @@ import java.io.File;
  * 文件辅助类
  * Created by Gnepux on 2015/10/21.
  */
-public class FileUtils {
+public class CUFileUtils {
 
     /**
      * 在指定目录下创建新目录

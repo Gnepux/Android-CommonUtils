@@ -20,7 +20,7 @@ import java.util.Enumeration;
  * Created by Gnepux on 2015/10/20.
  * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
  */
-public class NetUtils {
+public class CUNetUtils {
 
     /**
      * 判断网络是否连接或正在连接

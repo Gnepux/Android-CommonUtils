@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -14,6 +15,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.gnepux.common.other.BlurEffect;
@@ -32,7 +34,7 @@ import java.net.URL;
  * 图像辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class ImageUtils {
+public class CUImageUtils {
 
     /**
      * 为ImageView添加pinch缩放功能
@@ -449,6 +451,74 @@ public class ImageUtils {
         canvas.drawBitmap(bitmap, rect, rect, paint);
 
         return output;
+    }
+
+    /**
+     * 截取view的图像并返回bitmap
+     * Captures the view and returns bitmap
+     *
+     * @param v
+     * @return bitmap of view captured
+     */
+    public static Bitmap captureView(View v) {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+//        v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+        v.draw(c);
+        return b;
+    }
+
+    /**
+     * 抓取view中某点的颜色
+     *
+     * @param view
+     * @param x
+     * @param y
+     * @return
+     * @throws NullPointerException
+     */
+    public static int pickColor(View view, int x, int y)
+            throws NullPointerException {
+
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+        int color = 0;
+
+        int offset = 1; // 3x3 Matrix
+        int pixelsNumber = 0;
+
+        int xImage = 0;
+        int yImage = 0;
+
+
+        ImageView imageView = (ImageView) view;
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap imageBitmap = bitmapDrawable.getBitmap();
+
+
+        xImage = (int) (x * ((double) imageBitmap.getWidth() / (double) imageView.getWidth()));
+        yImage = (int) (y * ((double) imageBitmap.getHeight() / (double) imageView.getHeight()));
+
+
+        for (int i = xImage - offset; i <= xImage + offset; i++) {
+            for (int j = yImage - offset; j <= yImage + offset; j++) {
+                try {
+                    color = imageBitmap.getPixel(i, j);
+                    red += Color.red(color);
+                    green += Color.green(color);
+                    blue += Color.blue(color);
+                    pixelsNumber += 1;
+                } catch (Exception e) {
+                    //Log.w(TAG, "Error picking color!");
+                }
+            }
+        }
+        red = red / pixelsNumber;
+        green = green / pixelsNumber;
+        blue = blue / pixelsNumber;
+
+        return Color.rgb(red, green, blue);
     }
 
 }

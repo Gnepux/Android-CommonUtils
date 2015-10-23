@@ -9,9 +9,9 @@ import android.util.Log;
  * Location相关辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class LocationUtils {
+public class CULocationUtils {
 
-    private static final String TAG = LocationUtils.class.getSimpleName();
+    private static final String TAG = CULocationUtils.class.getSimpleName();
 
     /**
      * 获取设备当前GPS状态（是否开启）

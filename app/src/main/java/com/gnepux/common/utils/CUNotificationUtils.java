@@ -11,7 +11,7 @@ import android.os.Build;
  * Notification辅助类
  * Created by Gnepux on 2015/10/21.
  */
-public class NotificationUtils {
+public class CUNotificationUtils {
 
     /**
      * 发送Notification，requestCode默认为0

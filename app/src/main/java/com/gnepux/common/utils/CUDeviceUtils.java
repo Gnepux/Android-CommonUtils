@@ -3,7 +3,6 @@ package com.gnepux.common.utils;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
@@ -24,9 +23,9 @@ import java.io.IOException;
  * Created by Gnepux on 2015/10/20.
  * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
  */
-public class DeviceUtils {
+public class CUDeviceUtils {
 
-    private static final String TAG = DeviceUtils.class.getSimpleName();
+    private static final String TAG = CUDeviceUtils.class.getSimpleName();
 
     private static final String FILE_MEMORY = "/proc/meminfo";
 

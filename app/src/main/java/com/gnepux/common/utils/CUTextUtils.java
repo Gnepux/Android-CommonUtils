@@ -1,5 +1,6 @@
 package com.gnepux.common.utils;
 
+import android.util.Patterns;
 import android.widget.EditText;
 
 import java.util.Random;
@@ -10,7 +11,7 @@ import java.util.regex.Pattern;
  * 文本辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class TextUtils {
+public class CUTextUtils {
 
     /**
      * check EditText is empty or not
@@ -32,7 +33,7 @@ public class TextUtils {
      * @return true when its valid otherwise false
      */
     public static boolean isEmailIdValid(String email) {
-        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+/*        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         CharSequence inputStr = email;
 
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
@@ -41,9 +42,19 @@ public class TextUtils {
         if (matcher.matches())
             return true;
         else
-            return false;
+            return false;*/
+
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-
+    /**
+     * 判断网址格式是否正确
+     *
+     * @param url
+     * @return
+     */
+    public static boolean isWebsiteUrlValid(String url) {
+        return Patterns.WEB_URL.matcher(url).matches();
+    }
 
 }

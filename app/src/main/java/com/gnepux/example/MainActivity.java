@@ -1,29 +1,20 @@
 package com.gnepux.example;
 
-import android.content.Intent;
-import android.media.Image;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.gnepux.common.utils.AppUtils;
-import com.gnepux.common.utils.DeviceUtils;
-import com.gnepux.common.utils.DialogUtils;
-import com.gnepux.common.utils.ImageUtils;
-import com.gnepux.common.utils.NotificationUtils;
-import com.gnepux.common.utils.SDCardUtils;
+import com.gnepux.common.utils.CUImageUtils;
+import com.gnepux.common.utils.CUKeyBoardUtils;
+import com.gnepux.common.utils.CUScreenUtils;
+import com.gnepux.common.utils.T;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -36,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
 
     private static final String IMG_URL = "http://image5.suning.cn/uimg/cms/img/143882327432832878.jpg";
 
-    EditText editText;
+    //EditText editText;
 
     ImageView imageview;
 
@@ -47,13 +38,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = (EditText) findViewById(R.id.edittext);
+       // editText = (EditText) findViewById(R.id.edittext);
         imageview = (ImageView) findViewById(R.id.imageview);
         seekBar = (SeekBar) findViewById(R.id.seekbar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                imageview.setImageBitmap(ImageUtils.getRoundedCornerBitmap(ImageUtils.getBitmap(IMG_PATH), progress));
+                imageview.setImageBitmap(CUImageUtils.getRoundedCornerBitmap(CUImageUtils.getBitmap(IMG_PATH), progress));
             }
 
             @Override
@@ -69,11 +60,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void goCheckIsEmpty(View v) {
-        ImageUtils.downloadImageFromURL(IMG_URL , imageview);
+        CUKeyBoardUtils.closeKeyboard(this);
     }
 
     public void goClean(View v) {
-        imageview.setImageBitmap(ImageUtils.getRoundedCornerBitmap(ImageUtils.getBitmap(IMG_PATH), 50));
+        T.show(this, String.valueOf(CUKeyBoardUtils.isActive(this)), Toast.LENGTH_SHORT);
     }
 
 

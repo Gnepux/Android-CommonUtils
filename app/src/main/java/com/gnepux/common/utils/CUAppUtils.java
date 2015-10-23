@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
  * App相关辅助类
  * Created by Gnepux on 2015/10/20.
  */
-public class AppUtils {
+public class CUAppUtils {
 
     /**
      * 获取App Icon
