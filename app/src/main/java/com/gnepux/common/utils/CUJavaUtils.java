@@ -145,4 +145,22 @@ public class CUJavaUtils {
         }
         return Long.parseLong(longNum);
     }
+
+    /**
+     * 将string数组转成字符串
+     *
+     * @param array
+     * @param sperate
+     * @return
+     */
+    public static String ArrayToString(String[] array, String sperate) {
+        int length = array.length;
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < length - 1; i++) {
+            buffer.append(array[i] + sperate);
+        }
+        buffer.append(array[length - 1]);
+        return buffer.toString();
+    }
+
 }
