@@ -18,8 +18,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.gnepux.common.other.BlurEffect;
-import com.gnepux.common.other.PinchZoom;
+import com.gnepux.common.algorithm.BlurEffect;
+import com.gnepux.common.algorithm.PinchZoom;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

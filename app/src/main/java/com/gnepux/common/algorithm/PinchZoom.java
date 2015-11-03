@@ -1,4 +1,4 @@
-package com.gnepux.common.other;
+package com.gnepux.common.algorithm;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
